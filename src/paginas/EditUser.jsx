@@ -1,9 +1,8 @@
-// src/paginas/EditUser.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
-import BackButton from "../componentes/BackButton";
+import "../styles/EditUser.css"; // Importar estilos personalizados
 
 const EditUser = () => {
   const { id } = useParams();
@@ -79,51 +78,50 @@ const EditUser = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Editar Usuario</h1>
-      <BackButton /> {/* Botón para volver */}
-      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Nombre</label>
-          <input
-            type="text"
-            className="w-full px-4 py-2 border rounded"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Trabajo</label>
-          <input
-            type="text"
-            className="w-full px-4 py-2 border rounded"
-            value={job}
-            onChange={(e) => setJob(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Correo Electrónico</label>
-          <input
-            type="email"
-            className="w-full px-4 py-2 border rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className={`w-full py-2 px-4 rounded text-white ${
-            loading ? "bg-gray-500" : "bg-blue-500 hover:bg-blue-600"
-          }`}
-          disabled={loading}
-        >
-          {loading ? "Guardando..." : "Guardar Cambios"}
-        </button>
-      </form>
+    <div className="edit-user-container">
+      <div className="edit-user-card">
+        <a href="/" className="back-button">
+          Volver al listado
+        </a>
+        <h1 className="edit-user-title">Editar Usuario</h1>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Nombre</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Trabajo</label>
+            <input
+              type="text"
+              value={job}
+              onChange={(e) => setJob(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Correo Electrónico</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="edit-user-button"
+            disabled={loading}
+          >
+            {loading ? "Guardando..." : "Guardar Cambios"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,94 @@
+/* General container */
+.user-details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+ 
+  padding: 2rem;
+}
+
+/* Card styling */
+.user-details-card {
+ 
+  background: linear-gradient(135deg, #1e65ff, #ffffff);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.user-details-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Avatar styling */
+.user-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #4a90e2;
+  margin: 0 auto 1rem;
+  transition: transform 0.4s ease;
+}
+
+.user-avatar:hover {
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* User details */
+.user-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+}
+
+.user-email {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.user-info {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.user-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.user-info p strong {
+  color: #333;
+}
+
+/* Button styling */
+.user-action-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(to right, #4a90e2, #007bff);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-action-button:hover {
+  background: linear-gradient(to right, #007bff, #4a90e2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}

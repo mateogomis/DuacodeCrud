@@ -1,0 +1,179 @@
+/* styles.css */
+
+/* Fondo de la página */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #ffffff); /* Fondo degradado */
+    background-attachment: fixed; /* Fijo al hacer scroll */
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Tarjetas con diseño limpio */
+  .card {
+    position: relative;
+    background: linear-gradient(135deg, #1e65ff, #f3f4f6);
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centramos el contenido */
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Imagen del usuario */
+  .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 1rem; /* Espaciado entre imagen y texto */
+    display: block;
+    border: 4px solid #2563eb; /* Marco azul */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Nombre del usuario */
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1f2937; /* Gris oscuro */
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Correo del usuario */
+  .card-text {
+    font-size: 1rem;
+    color: #6b7280; /* Gris medio */
+    margin-bottom: 1rem;
+  }
+  
+  /* Botones */
+  .card-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Estilo de los botones */
+  .button {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Botón "Detalles" */
+  .button-details {
+    background: #2563eb;
+    color: #ffffff;
+  }
+  
+  .button-details:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+  }
+  
+  /* Botón "Editar" */
+  .button-edit {
+    background: #10b981;
+    color: #ffffff;
+  }
+  
+  .button-edit:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+  }
+  
+  /* Botón "Eliminar" */
+  .button-delete {
+    background: #ef4444;
+    color: #ffffff;
+  }
+  
+  .button-delete:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+  }
+  
+  
+  /* Botón Crear Usuario */
+.button-create {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    color: white;
+    background: linear-gradient(90deg, #4c83ff, #1c4eff); /* Degradado azul */
+    border: none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button-create:hover {
+    background: linear-gradient(90deg, #1c4eff, #4c83ff); /* Degradado invertido */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+ /* Animación del título */
+@keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Comienza un poco más abajo */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Se alinea en su posición final */
+    }
+  }
+  
+  /* Título Gestión de Usuarios */
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+    text-align: center;
+    animation: slideIn 0.8s ease-out; /* Aplica la animación */
+  }
+  
+  .title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: #007bff;
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+  }
+  

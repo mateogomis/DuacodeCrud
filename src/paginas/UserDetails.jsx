@@ -1,12 +1,12 @@
-// src/paginas/UserDetails.jsx
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import axios from "axios";
-import BackButton from "../componentes/BackButton";
+import "../styles/UserDetails.css";
 
 const UserDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { users } = useUserContext();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,12 +16,13 @@ const UserDetails = () => {
       const foundUser = users.find((u) => u.id === parseInt(id) || u.id === id);
 
       if (foundUser) {
-        setUser(foundUser);
+        setUser({ ...foundUser, job: foundUser.job || "Sin asignar" });
         setLoading(false);
       } else {
         try {
           const response = await axios.get(`https://reqres.in/api/users/${id}`);
-          setUser(response.data.data);
+          const fetchedUser = response.data.data;
+          setUser({ ...fetchedUser, job: fetchedUser.job || "Sin asignar" });
         } catch (error) {
           console.error("Error al obtener los detalles del usuario:", error);
         } finally {
@@ -34,26 +35,44 @@ const UserDetails = () => {
   }, [id, users]);
 
   if (loading) {
-    return <p className="text-center">Cargando detalles del usuario...</p>;
+    return (
+      <div className="user-details-container">
+        <p className="text-center text-xl font-semibold text-blue-500 animate-pulse">
+          Cargando detalles del usuario...
+        </p>
+      </div>
+    );
   }
 
   if (!user) {
-    return <p className="text-center text-red-500">No se encontró el usuario.</p>;
+    return (
+      <div className="user-details-container">
+        <p className="text-center text-red-500">No se encontró el usuario.</p>
+      </div>
+    );
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Detalles del Usuario: {user.first_name} {user.last_name}
-      </h1>
-      <BackButton /> {/* Botón para volver */}
-      <img
-        src={user.avatar || "https://via.placeholder.com/150"}
-        alt={user.first_name}
-        className="rounded-full w-32 h-32 mx-auto mb-4"
-      />
-      <p className="text-center text-lg">Email: {user.email}</p>
-      {user.job && <p className="text-center text-lg">Trabajo: {user.job}</p>}
+    <div className="user-details-container">
+      <div className="user-details-card">
+        <img
+          src={user.avatar || "https://via.placeholder.com/150"}
+          alt={`${user.first_name} ${user.last_name}`}
+          className="user-avatar"
+        />
+        <h1 className="user-name">{user.first_name} {user.last_name}</h1>
+        <p className="user-email">{user.email}</p>
+        <div className="user-info">
+          <p><strong>Trabajo:</strong> {user.job}</p>
+          <p><strong>ID:</strong> {user.id}</p>
+        </div>
+        <button
+          className="user-action-button"
+          onClick={() => navigate("/")}
+        >
+          Volver al listado
+        </button>
+      </div>
     </div>
   );
 };
