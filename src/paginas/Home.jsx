@@ -7,6 +7,7 @@ import "../styles/styles.css"; // Importar estilos personalizados
 const Home = () => {
   const { users, setUsers } = useUserContext();
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para la barra de búsqueda
 
   useEffect(() => {
     const getUsers = async () => {
@@ -63,6 +64,11 @@ const Home = () => {
     }
   };
 
+  // Filtrar usuarios basados en el término de búsqueda
+  const filteredUsers = users.filter((user) =>
+    user.first_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading) {
     return <p className="text-center text-lg">Cargando usuarios...</p>;
   }
@@ -75,33 +81,60 @@ const Home = () => {
           Crear Usuario
         </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {users.map((user) => (
-          <div key={user.id} className="card text-center">
-            <img
-              src={user.avatar}
-              alt={user.first_name}
-              className="rounded-full"
-            />
-            <h2 className="card-title">{user.first_name} {user.last_name}</h2>
-            <p className="card-text">{user.email}</p>
-            <div className="card-buttons">
-              <Link to={`/user/${user.id}`} className="button button-details">
-                <i className="fa fa-info-circle"></i> Ver Detalles
-              </Link>
-              <Link to={`/edit-user/${user.id}`} className="button button-edit">
-                <i className="fa fa-edit"></i> Editar
-              </Link>
-              <button
-                onClick={() => handleDelete(user.id)}
-                className="button button-delete"
-              >
-                <i className="fa fa-trash"></i> Eliminar
-              </button>
-            </div>
-          </div>
-        ))}
+
+      {/* Barra de búsqueda */}
+      <div className="search-bar mb-6">
+        <input
+          type="text"
+          placeholder="Buscar usuario por nombre..."
+          className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
+
+      {/* Lista de usuarios filtrados */}
+      <div className="user-list-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredUsers.map((user) => (
+            <div key={user.id} className="card text-center">
+              <img
+                src={user.avatar}
+                alt={user.first_name}
+                className="rounded-full"
+              />
+              <h2 className="card-title">
+                {user.first_name} {user.last_name}
+              </h2>
+              <p className="card-text">{user.email}</p>
+              <div className="card-buttons">
+                <Link to={`/user/${user.id}`} className="button button-details">
+                  <i className="fa fa-info-circle"></i> Ver Detalles
+                </Link>
+                <Link
+                  to={`/edit-user/${user.id}`}
+                  className="button button-edit"
+                >
+                  <i className="fa fa-edit"></i> Editar
+                </Link>
+                <button
+                  onClick={() => handleDelete(user.id)}
+                  className="button button-delete"
+                >
+                  <i className="fa fa-trash"></i> Eliminar
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mensaje si no se encuentran resultados */}
+      {filteredUsers.length === 0 && (
+        <p className="text-center text-gray-500 mt-4">
+          No se encontraron usuarios que coincidan con la búsqueda.
+        </p>
+      )}
     </div>
   );
 };
