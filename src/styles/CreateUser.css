@@ -1,4 +1,3 @@
-/* General container */
 .create-user-container {
     display: flex;
     align-items: center;
@@ -9,10 +8,9 @@
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    overflow: hidden; /* Elimina scrolls */
+    overflow: hidden; 
   }
   
-  /* Card styling */
   .create-user-card {
     background: linear-gradient(to right, #1e65ff, #f3f4f6);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -29,7 +27,6 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
   
-  /* Heading */
   .create-user-title {
     font-size: 1.8rem;
     font-weight: bold;
@@ -37,7 +34,6 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Error message */
   .error-message {
     color: #ff4d4f;
     background: #ffecec;
@@ -49,7 +45,6 @@
     text-align: center;
   }
   
-  /* Form field */
   .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -79,7 +74,6 @@
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
   }
   
-  /* Button */
   .create-user-button {
     display: inline-block;
     width: 100%;
@@ -108,7 +102,6 @@
     box-shadow: none;
   }
   
-  /* Back button styling */
   .back-button {
     display: inline-block;
     margin-bottom: 1.5rem;

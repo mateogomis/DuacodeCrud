@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { fetchUsers } from "../servicios/apiService";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
-import "../styles/styles.css"; // Importar estilos personalizados
+import "../styles/styles.css";
 
 const Home = () => {
   const { users, setUsers } = useUserContext();
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para la barra de búsqueda
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
     const getUsers = async () => {
@@ -35,14 +35,12 @@ const Home = () => {
     if (!confirmed) return;
 
     try {
-      // Identificar si el usuario es local (sin ID válido para la API)
       if (typeof id !== "number" || id < 0) {
         console.log("Usuario local eliminado.");
         setUsers(users.filter((user) => user.id !== id));
         return;
       }
 
-      // Llamada a la API para usuarios con ID válido
       const response = await fetch(`https://reqres.in/api/users/${id}`, {
         method: "DELETE",
       });
@@ -53,7 +51,6 @@ const Home = () => {
         );
       }
 
-      // Actualizar la lista de usuarios después de la eliminación
       setUsers(users.filter((user) => user.id !== id));
       alert("Usuario eliminado correctamente.");
     } catch (error) {
@@ -64,7 +61,6 @@ const Home = () => {
     }
   };
 
-  // Filtrar usuarios basados en el término de búsqueda
   const filteredUsers = users.filter((user) =>
     user.first_name.toLowerCase().includes(searchTerm.toLowerCase())
   );

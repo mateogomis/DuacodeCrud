@@ -8,7 +8,7 @@ const CreateUser = () => {
     const [name, setName] = useState("");
     const [job, setJob] = useState("");
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false); // Estado de carga
+    const [loading, setLoading] = useState(false); 
     const { users, setUsers } = useUserContext();
     const navigate = useNavigate();
   
@@ -20,7 +20,7 @@ const CreateUser = () => {
         return;
       }
   
-      setLoading(true); // Inicia el estado de carga
+      setLoading(true); 
   
       try {
         const response = await axios.post("https://reqres.in/api/users", {
@@ -45,7 +45,7 @@ const CreateUser = () => {
         console.error("Error al crear el usuario:", error);
         setError("Hubo un error al intentar crear el usuario. Inténtalo de nuevo.");
       } finally {
-        setLoading(false); // Finaliza el estado de carga
+        setLoading(false); 
       }
     };
   
@@ -80,7 +80,7 @@ const CreateUser = () => {
             <button
               type="submit"
               className={`create-user-button ${loading ? "loading" : ""}`}
-              disabled={loading} // Desactiva el botón mientras se carga
+              disabled={loading} 
             >
               {loading ? "Creando" : "Crear Usuario"}{" "}
               {loading && <span className="dots">...</span>} {/* Puntos suspensivos */}

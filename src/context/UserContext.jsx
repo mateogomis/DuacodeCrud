@@ -1,11 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 
-// Crear el contexto
 const UserContext = createContext();
 
-// Proveedor del contexto
 export const UserProvider = ({ children }) => {
-  const [users, setUsers] = useState([]); // Estado global para usuarios
+  const [users, setUsers] = useState([]); 
 
   return (
     <UserContext.Provider value={{ users, setUsers }}>
@@ -14,5 +12,4 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Hook personalizado para usar el contexto
 export const useUserContext = () => useContext(UserContext);

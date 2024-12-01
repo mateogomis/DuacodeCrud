@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
-import "../styles/EditUser.css"; // Importar estilos personalizados
+import "../styles/EditUser.css"; 
 
 const EditUser = () => {
   const { id } = useParams();
@@ -11,27 +11,26 @@ const EditUser = () => {
 
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
-  const [email, setEmail] = useState(""); // Estado para email
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(""); // Para manejar errores
+  const [error, setError] = useState(""); 
 
-  const isAlpha = (value) => /^[a-zA-Z\s]+$/.test(value); // Validar solo letras y espacios
+  const isAlpha = (value) => /^[a-zA-Z\s]+$/.test(value); 
   const isEmailValid = (value) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // Validar formato de email
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); 
 
   useEffect(() => {
     const userToEdit = users.find((u) => u.id === parseInt(id) || u.id === id);
     if (userToEdit) {
       setName(userToEdit.first_name);
       setJob(userToEdit.job || "");
-      setEmail(userToEdit.email || ""); // Precargar email
+      setEmail(userToEdit.email || ""); 
     }
   }, [id, users]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones
     if (!name.trim() || !job.trim() || !email.trim()) {
       setError("Todos los campos son obligatorios");
       return;
@@ -53,13 +52,13 @@ const EditUser = () => {
     }
 
     setLoading(true);
-    setError(""); // Limpiar errores previos si pasa la validación
+    setError(""); 
 
     try {
       const response = await axios.put(`https://reqres.in/api/users/${id}`, {
         name,
         job,
-        email, // Incluir email en la petición
+        email, 
       });
 
       setUsers(
