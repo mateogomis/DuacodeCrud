@@ -79,10 +79,13 @@ const EditUser = () => {
   return (
     <div className="edit-user-container">
       <div className="edit-user-card">
-        <a href="/" className="back-button">
+      <h1 className="edit-user-title">Editar Usuario</h1>
+      <button
+          className="back-button"
+          onClick={() => navigate("/")}
+          >
           Volver al listado
-        </a>
-        <h1 className="edit-user-title">Editar Usuario</h1>
+        </button>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -117,7 +120,13 @@ const EditUser = () => {
             className="edit-user-button"
             disabled={loading}
           >
-            {loading ? "Guardando..." : "Guardar Cambios"}
+            {loading ? (
+              <>
+                Guardando <span className="dots-loading"><span>.</span><span>.</span><span>.</span></span>
+              </>
+            ) : (
+              "Guardar Cambios"
+            )}
           </button>
         </form>
       </div>

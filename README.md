@@ -18,7 +18,21 @@
 
 -------------------------------------------------------------------
 
-Plugin / Herramienta : BlackBoxAI
+## HERRAMIENTAS Y PLUGINS UTILIZADOS
+
+### PLUGINS / HERRAMIENTAS  
+- **BlackBoxAI**  
+- **FontAwesome y Bootstrap Icons**  
+- **Google Fonts - Inter**
+
+--------------------------------------------------------------------
+
+## APIS UTILIZADAS
+
+- **Reqres API** 
+- **Random User API** 
+
+---------------------------------------------------------------------
 
 
 # React + Vite

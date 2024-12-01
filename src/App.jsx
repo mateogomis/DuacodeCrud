@@ -4,6 +4,7 @@ import Home from "./paginas/Home";
 import UserDetails from "./paginas/UserDetails";
 import CreateUser from "./paginas/CreateUser";
 import EditUser from "./paginas/EditUser";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (

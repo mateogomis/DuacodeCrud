@@ -54,9 +54,12 @@ const CreateUser = () => {
         <div className="create-user-card">
           <h2 className="create-user-title">Crear Usuario</h2>
            {/* Botón para volver al listado */}
-           <a href="/" className="back-button">
-            Volver al listado
-          </a>
+          <button
+          className="back-button"
+          onClick={() => navigate("/")}
+          >
+          Volver al listado
+          </button>
           {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -80,14 +83,17 @@ const CreateUser = () => {
             <button
               type="submit"
               className={`create-user-button ${loading ? "loading" : ""}`}
-              disabled={loading} 
+              disabled={loading}
             >
-              {loading ? "Creando" : "Crear Usuario"}{" "}
-              {loading && <span className="dots">...</span>} {/* Puntos suspensivos */}
+              {loading ? (
+                <>
+                  Creando <span className="dots-loading"><span>.</span><span>.</span><span>.</span></span>
+                </>
+              ) : (
+                "Crear Usuario"
+              )}
             </button>
           </form>
-  
-         
         </div>
       </div>
     );
